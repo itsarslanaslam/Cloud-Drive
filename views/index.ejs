@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CloudDrive - Secure File Storage & Sharing</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .glass-effect { backdrop-filter: blur(10px); background: rgba(255, 255, 255, 0.1); }
+        .animate-float { animation: float 6s ease-in-out infinite; }
+        @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-20px); } }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-cloud text-white text-xl"></i>
+                    </div>
+                    <span class="text-2xl font-bold text-gray-900">CloudDrive</span>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="/user/login" class="text-gray-600 hover:text-gray-900 transition-colors">Login</a>
+                    <a href="/user/register" class="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-2 rounded-lg hover:shadow-lg transition-all duration-300">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="gradient-bg text-white py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-8">
+                    <h1 class="text-5xl lg:text-6xl font-bold leading-tight">
+                        Secure Cloud Storage
+                        <span class="block text-blue-200">for Everyone</span>
+                    </h1>
+                    <p class="text-xl text-blue-100 leading-relaxed">
+                        Store, share, and access your files from anywhere. Built with security and simplicity in mind.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="/user/register" class="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:shadow-xl transition-all duration-300 text-center">
+                            Start Free Trial
+                        </a>
+                        <a href="#features" class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-all duration-300 text-center">
+                            Learn More
+                        </a>
+                    </div>
+                    <div class="flex items-center space-x-6 text-blue-100">
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>256-bit Encryption</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <i class="fas fa-globe"></i>
+                            <span>Global CDN</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="glass-effect rounded-2xl p-8 animate-float">
+                        <div class="bg-white rounded-xl p-6 shadow-2xl">
+                            <div class="flex items-center space-x-4 mb-6">
+                                <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+                                    <i class="fas fa-file-alt text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-semibold text-gray-900">document.pdf</h3>
+                                    <p class="text-sm text-gray-500">2.4 MB • Just now</p>
+                                </div>
+                            </div>
+                            <div class="space-y-3">
+                                <div class="flex items-center space-x-4">
+                                    <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
+                                        <i class="fas fa-image text-green-600"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <h4 class="font-medium text-gray-900">photo.jpg</h4>
+                                        <p class="text-sm text-gray-500">1.8 MB</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-4">
+                                    <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
+                                        <i class="fas fa-video text-purple-600"></i>
+                                    </div>
+                                    <div class="flex-1">
+                                        <h4 class="font-medium text-gray-900">video.mp4</h4>
+                                        <p class="text-sm text-gray-500">45.2 MB</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Why Choose CloudDrive?</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Experience the perfect blend of security, speed, and simplicity
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-gray-50 rounded-xl p-8 hover:shadow-lg transition-all duration-300">
+                    <div class="w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-shield-alt text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Military-Grade Security</h3>
+                    <p class="text-gray-600">Your files are encrypted with AES-256 encryption and stored securely in our cloud infrastructure.</p>
+                </div>
+                
+                <div class="bg-gray-50 rounded-xl p-8 hover:shadow-lg transition-all duration-300">
+                    <div class="w-16 h-16 bg-green-100 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-bolt text-green-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Lightning Fast</h3>
+                    <p class="text-gray-600">Upload and download files at incredible speeds with our global CDN network.</p>
+                </div>
+                
+                <div class="bg-gray-50 rounded-xl p-8 hover:shadow-lg transition-all duration-300">
+                    <div class="w-16 h-16 bg-purple-100 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-mobile-alt text-purple-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Access Anywhere</h3>
+                    <p class="text-gray-600">Access your files from any device, anywhere in the world with our responsive web interface.</p>
+                </div>
+                
+                <div class="bg-gray-50 rounded-xl p-8 hover:shadow-lg transition-all duration-300">
+                    <div class="w-16 h-16 bg-yellow-100 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-users text-yellow-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Easy Sharing</h3>
+                    <p class="text-gray-600">Share files with anyone using secure links with customizable permissions and expiration dates.</p>
+                </div>
+                
+                <div class="bg-gray-50 rounded-xl p-8 hover:shadow-lg transition-all duration-300">
+                    <div class="w-16 h-16 bg-red-100 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-history text-red-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Version History</h3>
+                    <p class="text-gray-600">Never lose your work with automatic version control and file recovery options.</p>
+                </div>
+                
+                <div class="bg-gray-50 rounded-xl p-8 hover:shadow-lg transition-all duration-300">
+                    <div class="w-16 h-16 bg-indigo-100 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-chart-line text-indigo-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Analytics</h3>
+                    <p class="text-gray-600">Track your storage usage and file activity with detailed analytics and insights.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-20">
+        <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold mb-6">Ready to Get Started?</h2>
+            <p class="text-xl text-blue-100 mb-8">Join thousands of users who trust CloudDrive for their file storage needs.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="/user/register" class="bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:shadow-xl transition-all duration-300">
+                    Create Free Account
+                </a>
+                <a href="/user/login" class="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-all duration-300">
+                    Sign In
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-cloud text-white"></i>
+                        </div>
+                        <span class="text-xl font-bold">CloudDrive</span>
+                    </div>
+                    <p class="text-gray-400">Secure cloud storage for everyone. Store, share, and access your files from anywhere.</p>
+                </div>
+                
+                <div>
+                    <h3 class="font-semibold mb-4">Product</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">Features</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Pricing</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Security</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">API</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="font-semibold mb-4">Support</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">Help Center</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Contact Us</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Status</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Documentation</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="font-semibold mb-4">Company</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white transition-colors">About</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Blog</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Careers</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Privacy</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 CloudDrive. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

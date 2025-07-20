@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - CloudDrive</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-bg { background: linear-gradient(135deg, #181c2f 0%, #232946 100%); }
+        .glass-effect { backdrop-filter: blur(12px); background: rgba(36, 40, 59, 0.85); border: 1.5px solid #232946; }
+        .animate-float { animation: float 6s ease-in-out infinite; }
+        @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-20px); } }
+        .form-input:focus { box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1); }
+        /* 3D Input Styles */
+        .input-3d-container {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+            position: relative;
+            color: #e0e6f7;
+            margin-bottom: 1.5rem;
+        }
+        .input-3d-label {
+            font-size: 15px;
+            padding-left: 10px;
+            position: absolute;
+            top: 13px;
+            transition: 0.3s;
+            pointer-events: none;
+            color: #b8c1ec;
+        }
+        .input-3d {
+            width: 100%;
+            height: 45px;
+            border: none;
+            outline: none;
+            padding: 0px 7px;
+            border-radius: 6px;
+            color: #e0e6f7;
+            font-size: 15px;
+            background-color: transparent;
+            box-shadow: 3px 3px 10px rgba(0,0,0,0.7),
+            -1px -1px 6px rgba(36, 40, 59, 0.4);
+            background: rgba(36,40,59,0.18);
+        }
+        .input-3d:focus {
+            border: 2px solid #a5b4fc;
+            color: #fff;
+            box-shadow: 3px 3px 10px rgba(0,0,0,0.9),
+            -1px -1px 6px rgba(165, 180, 252, 0.2),
+            inset 3px 3px 10px rgba(0,0,0,0.7),
+            inset -1px -1px 6px rgba(165, 180, 252, 0.2);
+        }
+        .input-3d:valid ~ .input-3d-label,
+        .input-3d:focus ~ .input-3d-label {
+            transition: 0.3s;
+            padding-left: 2px;
+            transform: translateY(-35px);
+            font-size: 13px;
+            color: #a5b4fc;
+        }
+        .input-3d:valid,
+        .input-3d:focus {
+            box-shadow: 3px 3px 10px rgba(0,0,0,0.9),
+            -1px -1px 6px rgba(165, 180, 252, 0.2),
+            inset 3px 3px 10px rgba(0,0,0,0.7),
+            inset -1px -1px 6px rgba(165, 180, 252, 0.2);
+        }
+        .custom-btn {
+            background: linear-gradient(90deg, #a5b4fc 0%, #6c63ff 100%);
+            color: #181c2f;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            padding: 0.75rem 1.5rem;
+            transition: background 0.2s, transform 0.2s;
+        }
+        .custom-btn:hover {
+            background: linear-gradient(90deg, #6c63ff 0%, #a5b4fc 100%);
+            color: #fff;
+            transform: scale(1.04);
+        }
+        .custom-link {
+            color: #a5b4fc;
+            font-weight: 500;
+        }
+        .custom-link:hover {
+            color: #fff;
+            text-decoration: underline;
+        }
+        .divider {
+            border-top: 1px solid #232946;
+        }
+        .social-btn {
+            background: #232946;
+            border: 1px solid #393e5c;
+            color: #e0e6f7;
+            transition: background 0.2s, color 0.2s;
+        }
+        .social-btn:hover {
+            background: #393e5c;
+            color: #a5b4fc;
+        }
+    </style>
+</head>
+<body class="gradient-bg min-h-screen flex items-center justify-center p-4">
+    <div class="w-full max-w-md">
+        <!-- Logo and Title -->
+        <div class="text-center mb-8">
+            <div class="inline-flex items-center justify-center w-20 h-20 bg-[#232946] rounded-2xl shadow-lg mb-4 border-2 border-[#a5b4fc]">
+                <!-- Custom SVG Icon for CloudDrive -->
+                <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <ellipse cx="24" cy="30" rx="16" ry="10" fill="#a5b4fc" fill-opacity="0.18"/>
+                  <ellipse cx="24" cy="24" rx="14" ry="9" fill="#6c63ff" fill-opacity="0.22"/>
+                  <path d="M16 30c-2.5-7 2-14 8-14s10.5 7 8 14" stroke="#a5b4fc" stroke-width="2.5" fill="none"/>
+                  <ellipse cx="24" cy="28" rx="10" ry="6" fill="#a5b4fc" fill-opacity="0.35"/>
+                  <ellipse cx="24" cy="26" rx="7" ry="4" fill="#6c63ff" fill-opacity="0.5"/>
+                </svg>
+            </div>
+            <h1 class="text-3xl font-bold text-white mb-2">Welcome Back</h1>
+            <p class="text-blue-100">Sign in to your CloudDrive account</p>
+        </div>
+
+        <!-- Login Form -->
+        <div class="glass-effect rounded-2xl p-8 shadow-2xl">
+            <form action="/user/login" method="post" class="space-y-6">
+                <!-- Email Field with 3D effect -->
+                <div class="input-3d-container">
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        class="input-3d" 
+                        required 
+                        autocomplete="username"
+                        value="<%= typeof email !== 'undefined' ? email : '' %>"
+                    />
+                    <label for="email" class="input-3d-label">Email Address</label>
+                </div>
+                <!-- Password Field with 3D effect -->
+                <div class="input-3d-container" style="margin-bottom: 0;">
+                    <input 
+                        type="password" 
+                        id="password" 
+                        name="password" 
+                        class="input-3d" 
+                        required 
+                        autocomplete="current-password"
+                    />
+                    <label for="password" class="input-3d-label">Password</label>
+                    <button 
+                        type="button" 
+                        style="position:absolute; right:10px; top:10px; background:none; border:none; color:#a5b4fc; z-index:2;"
+                        onclick="togglePassword()"
+                        tabindex="-1"
+                    >
+                        <i id="password-icon" class="fas fa-eye"></i>
+                    </button>
+                </div>
+
+                <!-- Remember Me & Forgot Password -->
+                <div class="flex items-center justify-between">
+                    <label class="flex items-center">
+                        <input type="checkbox" name="rememberMe" class="rounded border-[#393e5c] bg-[#232946] text-blue-400 focus:ring-blue-500">
+                        <span class="ml-2 text-sm text-blue-100">Remember me</span>
+                    </label>
+                    <a href="#" class="text-sm custom-link transition-colors">
+                        Forgot password?
+                    </a>
+                </div>
+
+                <!-- Submit Button -->
+                <button 
+                    type="submit" 
+                    class="w-full custom-btn py-3 px-4 mt-2"
+                >
+                    <i class="fas fa-sign-in-alt mr-2"></i>Sign In
+                </button>
+            </form>
+
+            <!-- Divider -->
+            <div class="my-6 flex items-center">
+                <div class="flex-1 divider"></div>
+                <span class="px-4 text-sm text-blue-200">or</span>
+                <div class="flex-1 divider"></div>
+            </div>
+
+            <!-- Social Login Buttons -->
+            <div class="space-y-3">
+                <a href="/user/auth/google" class="w-full social-btn py-3 px-4 rounded-lg font-medium flex items-center justify-center">
+                    <i class="fab fa-google mr-2"></i>Continue with Google
+                </a>
+                <a href="/user/auth/github" class="w-full social-btn py-3 px-4 rounded-lg font-medium flex items-center justify-center">
+                    <i class="fab fa-github mr-2"></i>Continue with GitHub
+                </a>
+                <button onclick="checkOAuthStatus()" class="w-full bg-yellow-600/20 border border-yellow-400/30 text-yellow-200 py-2 px-4 rounded-lg text-sm hover:bg-yellow-600/30 transition-all duration-300">
+                    <i class="fas fa-cog mr-2"></i>Check OAuth Status
+                </button>
+            </div>
+
+            <!-- Sign Up Link -->
+            <div class="mt-6 text-center">
+                <p class="text-blue-100">
+                    Don't have an account? 
+                    <a href="/user/register" class="custom-link font-semibold transition-colors">
+                        Sign up here
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Message -->
+    <% if (typeof success !== 'undefined' && success) { %>
+        <div id="login-success" class="fixed top-4 left-1/2 transform -translate-x-1/2 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 flex items-center">
+            <i class="fas fa-check-circle mr-2"></i>
+            Login successful! Redirecting to dashboard...
+        </div>
+        <script>
+            setTimeout(function() {
+                window.location.href = '/user/dashboard';
+            }, 1500);
+        </script>
+    <% } %>
+
+    <!-- Error Message -->
+    <% if (typeof error !== 'undefined' && error) { %>
+        <div id="login-error" class="fixed top-4 left-1/2 transform -translate-x-1/2 bg-red-500 text-white px-6 py-3 rounded-lg shadow-lg z-50 flex items-center">
+            <i class="fas fa-exclamation-circle mr-2"></i>
+            <%= error %>
+        </div>
+        <script>
+            setTimeout(function() {
+                var el = document.getElementById('login-error');
+                if (el) el.style.display = 'none';
+            }, 4000);
+        </script>
+    <% } %>
+
+    <script>
+        function togglePassword() {
+            const passwordInput = document.getElementById('password');
+            const passwordIcon = document.getElementById('password-icon');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                passwordIcon.classList.remove('fa-eye');
+                passwordIcon.classList.add('fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                passwordIcon.classList.remove('fa-eye-slash');
+                passwordIcon.classList.add('fa-eye');
+            }
+        }
+
+        // Add floating animation to form
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.querySelector('.glass-effect');
+            form.classList.add('animate-float');
+        });
+
+        // Check OAuth configuration status
+        async function checkOAuthStatus() {
+            try {
+                const response = await fetch('/user/auth/status');
+                const data = await response.json();
+                
+                let message = 'OAuth Configuration Status:\n\n';
+                message += `Google: ${data.google.configured ? '✅ Configured' : '❌ Not enabled'}\n`;
+                if (data.google.error) message += `Error: ${data.google.error}\n\n`;
+                
+                message += `GitHub: ${data.github.configured ? '✅ Configured' : '❌ Not enabled'}\n`;
+                if (data.github.error) message += `Error: ${data.github.error}\n\n`;
+                
+                message += '\n🔧 To enable OAuth providers:\n';
+                message += '1. Go to your Supabase dashboard\n';
+                message += '2. Click "Authentication" in the left sidebar\n';
+                message += '3. Click "Providers"\n';
+                message += '4. Find "Google" and toggle it ON\n';
+                message += '5. Find "GitHub" and toggle it ON\n';
+                message += '6. Save the changes\n';
+                message += '7. Refresh this page and try again\n\n';
+                
+                message += '📝 Note: You can add OAuth credentials later for full functionality.';
+                
+                alert(message);
+            } catch (err) {
+                alert('Error checking OAuth status: ' + err.message);
+            }
+        }
+    </script>
+</body>
+</html>
